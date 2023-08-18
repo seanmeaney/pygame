@@ -1,5 +1,4 @@
 import random
-from abc import ABC, abstractmethod
 
 import pygame
 from pygame.locals import *
@@ -10,7 +9,7 @@ LEVELUP = USEREVENT + 2
 class ResetException(Exception):
     """90 degrees, reset me"""
 
-class Entity(ABC):
+class Entity():
 
     def __init__(self, size, pos, img_name):
         self.surf = pygame.Surface(size, pygame.SRCALPHA)
@@ -24,7 +23,6 @@ class Entity(ABC):
     def render(self, screen):
         screen.blit(self.transformed_surface, self.rect)
 
-    @abstractmethod
     def update(self, scr_rect):
         raise Exception("Overload me!")
 
